@@ -31,7 +31,6 @@ class OrgMemberAdmin(admin.ModelAdmin):
 
     def get_member_program(self, obj):
         try:
-            member = Student.objects.get(id=obj.student_id)
-            return member.program
-        except Student.DoesNotExist:
+            return obj.student.program
+        except AttributeError:
             return None
